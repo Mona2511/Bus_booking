@@ -1,0 +1,17 @@
+<h2>📋 Booking List</h2>
+
+<h3>VIP Customers</h3>
+<ul>
+    {% for v in vip %}
+    <li>{{ v[1] }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Normal Customers</h3>
+<ul>
+    {% for n in normal %}
+    <li>{{ n }}</li>
+    {% endfor %}
+</ul>
+
+<a href="/">Go Home</a>

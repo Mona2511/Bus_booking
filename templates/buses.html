@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Buses</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🚌 Available Buses</h2>
+
+<table>
+    <tr>
+        <th>Bus Name</th>
+        <th>Price</th>
+        <th>Time</th>
+        <th>Route</th>
+        <th>Action</th>
+    </tr>
+
+    {% for bus in buses %}
+    <tr>
+        <td>{{ bus.name }}</td>
+        <td>₹{{ bus.price }}</td>
+        <td>{{ bus.time }}</td>
+        <td>{{ bus.from }} → {{ bus.to }}</td>
+        <td>
+            <!-- Go to seat booking -->
+            <a href="/seats">
+                <button>Book</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+
+<a href="/dashboard">
+    <button>⬅ Back to Dashboard</button>
+</a>
+
+</body>
+</html>

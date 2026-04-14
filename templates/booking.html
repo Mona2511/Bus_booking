@@ -1,0 +1,44 @@
+<h2>Select Your Seat</h2>
+
+<form method="post" action="/confirm">
+
+    Name: <input type="text" name="name"><br><br>
+
+    <input type="hidden" name="row" id="row">
+    <input type="hidden" name="col" id="col">
+
+    <table border="1" style="margin:auto;">
+        {% for i in range(seats|length) %}
+        <tr>
+            {% for j in range(seats[i]|length) %}
+            <td>
+                {% if seats[i][j] == 0 %}
+                <button type="button" onclick="selectSeat({{i}},{{j}})" style="background:green;color:white;">
+                    {{i}}-{{j}}
+                </button>
+                {% else %}
+                <button type="button" disabled style="background:red;color:white;">
+                    X
+                </button>
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    VIP: <input type="checkbox" name="vip"><br><br>
+
+    <button type="submit">Confirm Booking</button>
+
+</form>
+
+<script>
+function selectSeat(r, c) {
+    document.getElementById("row").value = r;
+    document.getElementById("col").value = c;
+    alert("Selected Seat: " + r + "-" + c);
+}
+</script>

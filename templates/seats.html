@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seat Booking</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        button {
+            width: 60px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .available button {
+            background-color: green;
+            color: white;
+        }
+
+        .available button:hover {
+            background-color: darkgreen;
+        }
+
+        .booked {
+            width: 60px;
+            height: 40px;
+            background-color: red;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .legend {
+            margin: 20px;
+        }
+
+        .box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .green { background-color: green; }
+        .red { background-color: red; }
+    </style>
+
+</head>
+
+<body>
+
+<h2>Select Your Seat</h2>
+
+<div class="legend">
+    <span class="box green"></span> Available
+    &nbsp;&nbsp;
+    <span class="box red"></span> Booked
+</div>
+
+<table border="1">
+    {% for i in range(seats|length) %}
+    <tr>
+        {% for j in range(seats[i]|length) %}
+        <td>
+            {% if seats[i][j] == 0 %}
+                <form method="POST" class="available">
+                    <input type="hidden" name="row" value="{{i}}">
+                    <input type="hidden" name="col" value="{{j}}">
+                    <button type="submit">{{ i }}{{ j }}</button>
+                </form>
+            {% else %}
+                <div class="booked">X</div>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+
+<a href="/dashboard">⬅ Back to Dashboard</a>
+
+</body>
+</html>
